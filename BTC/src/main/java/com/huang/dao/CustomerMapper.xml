@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.huang.dao.CustomersMapper">
+
+    <!--增加一个Book-->
+    <insert id="addCustomer" parameterType="Customers">
+      insert into btc.customers (cID,cName,cWeChat,cTel,api,secret,re,reY,reM,reNow)
+      values (#{cID},#{cName},#{cWeChat},#{cTel},#{api},#{secret},#{re},#{reY},#{reM},#{reNow})
+   </insert>
+
+    <!--根据id删除一个Book-->
+    <delete id="deleteCustomersById" parameterType="int">
+      delete from btc.customers where cID = #{cID}
+   </delete>
+
+    <!--更新Book-->
+    <update id="updateCustomers" parameterType="Customers">
+     update btc.customers set cID=#{cID},cName=#{cName},cWeChat=#{cWeChat},cTel=#{cTel},api=#{api},secret=#{secret},re=#{re},
+     reY=#{reY},reM=#{reM},reNow=#{reNow}
+     where cID = #{cID}
+   </update>
+
+    <!--根据id查询,返回一个Book-->
+    <select id="queryCustomer" resultType="Customers">
+      select * from btc.customers where cID = #{cID}
+   </select>
+
+    <!--查询全部Book-->
+    <select id="queryAllCustomers" resultType="Customers">
+      select * from btc.customers
+   </select>
+
+</mapper>
